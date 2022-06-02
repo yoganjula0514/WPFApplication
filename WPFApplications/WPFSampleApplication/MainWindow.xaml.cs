@@ -47,7 +47,23 @@ namespace WPFSampleApplication
 
         private void FinishDropDown_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.NoteText.Text = ((ComboBoxItem)((ComboBox)sender).SelectedValue).Content.ToString();
+            if (this.NoteText == null)
+                return;
+
+            var comboBox = (ComboBox)sender;
+            var comboBoxItem = (ComboBoxItem)comboBox.SelectedValue;
+
+            this.NoteText.Text = comboBoxItem.Content.ToString();
+        }
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            FinishDropDown_SelectionChanged(this.FinshDropdown, null);
+        }
+
+        private void SupplierNameText_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.MassText.Text = this.SupplierNameText.Text;
         }
     }
 }
