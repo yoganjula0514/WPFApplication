@@ -24,5 +24,30 @@ namespace WPFSampleApplication
         {
             InitializeComponent();
         }
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($"The Description is : {this.DescriptionText.Text}");
+        }
+
+        private void ResetButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            //this.WeldCheckBox.IsChecked = this.AssemblyCheckBox.IsChecked = this.PlasmaCheckBox.IsChecked =
+            //    this.LaserCheckBox.IsChecked = this.PurchaseCheckBox.IsChecked = this.LatheCheckBox.IsChecked =
+            //        this.DrillCheckBox.IsChecked = this.FoldCheckBox.IsChecked =
+            //            this.RollCheckBox.IsChecked = this.SawCheckBox.IsChecked = false;
+            this.WeldCheckBox.IsChecked = this.AssemblyCheckBox.IsChecked =  this.LatheCheckBox.IsChecked =
+                    this.DrillCheckBox.IsChecked =  false;
+        }
+
+        private void CheckBox_OnChecked(object sender, RoutedEventArgs e)
+        {
+            this.LengthText.Text += ((CheckBox)sender).Content.ToString();
+        }
+
+        private void FinishDropDown_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.NoteText.Text = ((ComboBoxItem)((ComboBox)sender).SelectedValue).Content.ToString();
+        }
     }
 }
